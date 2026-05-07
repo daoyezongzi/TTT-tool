@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge TTS 文本转语音</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Edge TTS 文本转语音</h1>
+        <p class="subtitle">输入文本并调整参数，生成 MP3 文件。</p>
+
+        <form id="ttsForm">
+            <label for="textInput">文本内容</label>
+            <textarea id="textInput" rows="8" placeholder="请输入要转换为语音的文本..." required></textarea>
+
+            <label for="voiceSelect">音源（Voice）</label>
+            <select id="voiceSelect" required>
+                <option value="">加载中...</option>
+            </select>
+
+            <div class="slider-group">
+                <label for="rateInput">语速：<span id="rateValue">0%</span></label>
+                <input id="rateInput" type="range" min="-100" max="100" step="1" value="0">
+            </div>
+
+            <div class="slider-group">
+                <label for="volumeInput">音量：<span id="volumeValue">0%</span></label>
+                <input id="volumeInput" type="range" min="-100" max="100" step="1" value="0">
+            </div>
+
+            <div class="slider-group">
+                <label for="pitchInput">语调：<span id="pitchValue">0Hz</span></label>
+                <input id="pitchInput" type="range" min="-100" max="100" step="1" value="0">
+            </div>
+
+            <label for="filenameInput">文件名（可选）</label>
+            <input id="filenameInput" type="text" placeholder="例如 my_tts_audio">
+
+            <button id="submitBtn" type="submit">生成 MP3</button>
+        </form>
+
+        <section id="resultSection" class="hidden">
+            <h2>生成结果</h2>
+            <p id="resultText"></p>
+            <audio id="audioPlayer" controls></audio>
+            <a id="downloadLink" href="#" download>下载 MP3</a>
+        </section>
+
+        <p id="statusText" class="status"></p>
+    </main>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
